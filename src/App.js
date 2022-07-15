@@ -1,21 +1,50 @@
+import { render } from '@testing-library/react';
+import { Component } from 'react';
 import './App.css';
 import Comentario from './components/Comentario';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Meu projeto</h1>
-      <Comentario nome="Jao" email="joao_emnail@com" data ={new Date()}>
-        Olá tudo bem ?
-        </Comentario>
-      <Comentario nome="Maria" email="maria_emnail@com" data ={new Date()}>
-      Olá tudo bem 2?
-        </Comentario>
-      <Comentario nome="Zé" email="ze_emnail@com" data ={new Date()}>
-      Olá tudo bem 3?
-        </Comentario>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    comentarios:[
+      {
+        nome: 'Jao',
+        email: 'jao_email',
+        data: new Date(),
+        mesagem: 'Ola 1 ?'
+      },
+      {
+        nome: 'Maria',
+        email: 'mar_email',
+        data: new Date(),
+        mesagem: 'Ola 2 ?'
+      },
+    ]
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Meu projeto</h1>
+        {
+          this.state.comentarios.map(
+            (comentario, i)=> ( 
+              <Comentario 
+              key={i}
+              nome={comentario.nome} 
+              email={comentario.email} 
+              data ={comentario.data}>
+              {comentario.mesagem}
+              </Comentario>
+            )
+
+          )
+        }
+      </div>
+    );
+  };
+
+  
 }
 
 export default App;
