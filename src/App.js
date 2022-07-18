@@ -76,7 +76,7 @@ class App extends Component {
           )
         }
 
-        <form method="post" onSubmit={this.adicionarComentario}>
+        <form method="post" onSubmit={this.adicionarComentario} className="Novo-Comentario">
           <h2>Adicionar Comentario</h2>
           <div>
             <input 
