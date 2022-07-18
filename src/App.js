@@ -43,6 +43,12 @@ class App extends Component {
 
   }
 
+  removerComentario = comentario =>{
+    let list = this.state.comentarios;
+    list = list.filter(c => c !== comentario);
+    this.setState({comentarios:list});
+  }
+
   digitacao = event =>{
     console.log(event);
     const {name,value} = event.target;
@@ -60,7 +66,9 @@ class App extends Component {
               key={i}
               nome={comentario.nome} 
               email={comentario.email} 
-              data ={comentario.data}>
+              data ={comentario.data}
+              onRemove={this.removerComentario.bind(this,comentario)}
+              >
               {comentario.mensagem}
               </Comentario>
             )
